@@ -20,6 +20,10 @@ class NewsViewController: UIViewController {
     
     private var feeds = [VkFeed]()
     
+    private var newsFeedViewModels = [VkFeedViewModel]()
+    
+    private let newsFeedViewModelFactory = NewsFeedViewModelFactory()
+    
     private var alamofireAdapterService = AlamofireAdapterService()
     
     var startFrom = ""
@@ -58,6 +62,7 @@ class NewsViewController: UIViewController {
         alamofireAdapterService.getFeedWithClosure(startFrom: needClearNews ? "":startFrom) { [weak self] feeds in
             guard let self = self else { return }
             self.handleFeedsResponse(feeds: feeds)
+            self.newsFeedViewModels = self.newsFeedViewModelFactory.constructViewModel(from: feeds)
         }
     }
     
@@ -102,7 +107,7 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
-        cell.configure(feed: feeds[indexPath.row])
+        cell.configure(viewModel: newsFeedViewModels[indexPath.row])
         cell.delegate = self
         return cell
     }

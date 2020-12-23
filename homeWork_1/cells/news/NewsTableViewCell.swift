@@ -64,7 +64,7 @@ class NewsTableViewCell: UITableViewCell {
         labelText.text = ""
         labelFeedGroupHeader.text = ""
         
-        imageNew.image = nil
+//        imageNew.image = nil
         
         if operation != nil {
             operation.cancel()
@@ -108,39 +108,20 @@ class NewsTableViewCell: UITableViewCell {
     }
     
     
-    func configure(feed: VkFeed) {
+    func configure(viewModel: VkFeedViewModel) {
+        labelFeedGroupHeader.text = viewModel.feedSourceName
+        labelDate.text = viewModel.feedDate
+        labelText.text = viewModel.feedText
+        imageViewGroup = viewModel.feedSourceImageView
+        imageNew = viewModel.feedItemImageView
+        labelLike.text = viewModel.likesCount
+        labelViews.text = viewModel.viewsCount
+        labelShare.text = viewModel.repostsCount
+        labelComment.text = viewModel.commentsCount
         
-        labelDate.text = feed.getFeedDate()
-        labelFeedGroupHeader.text = feed.sourceName
-        
-        if feed.feedText.count == 0 {
-            labelText.pin.height(0)
-        } else {
-            labelText.pin.height(70)
-        }
-        
-        labelText.text = feed.feedText
-        labelLike.text = feed.getStringFrom(count: feed.countLikes)
-        labelViews.text = feed.getStringFrom(count: feed.countViews)
-        labelShare.text = feed.getStringFrom(count: feed.countReposts)
-        labelComment.text = feed.getStringFrom(count: feed.countComments)
-        
-        imageViewGroup.sd_setImage(with: URL(string: feed.sourceUrl), placeholderImage: UIImage(named: "noPhoto"))
-        
-        if feed.attachments.count > 0 {
-            
-            let height = self.frame.width * CGFloat(feed.attachments[0].height) / CGFloat(feed.attachments[0].width)
-            
-            imageNew.pin.height(height)
-            
-            imageNew.sd_setImage(with: URL(string: feed.attachments[0].imageUrl), placeholderImage: UIImage(named: "noPhoto"))
-            
-        } else {
-            imageNew.pin.height(0)
-        }
-        
-        setNeedsLayout()
-        layoutIfNeeded()
+//        imageHeightConstraint.constant = self.frame.width * viewModel.viewRatio
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
     }
     
     
