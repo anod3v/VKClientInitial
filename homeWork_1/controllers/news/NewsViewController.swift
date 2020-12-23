@@ -20,6 +20,8 @@ class NewsViewController: UIViewController {
     
     private var feeds = [VkFeed]()
     
+    private var alamofireAdapterService = AlamofireAdapterService()
+    
     var startFrom = ""
     private var needClearNews = true
     private var isLoad = false
@@ -53,7 +55,10 @@ class NewsViewController: UIViewController {
     private func prepareGetFeeds(needClearNews: Bool) {
         isLoad = true
         self.needClearNews = needClearNews
-        AlamofireService.instance.getNews(startFrom: needClearNews ? "":startFrom, delegate: self)
+        alamofireAdapterService.getFeedWithClosure(startFrom: needClearNews ? "":startFrom) { [weak self] feeds in
+            guard let self = self else { return }
+            self.handleFeedsResponse(feeds: feeds)
+        }
     }
     
     
@@ -135,19 +140,9 @@ extension NewsViewController: NewsTableViewCellDelegate {
     
 }
 
-extension NewsViewController: VkApiFeedsDelegate {
+extension NewsViewController {
     
-    func returnFeeds(_ feeds: [VkFeed]) {
-//        DispatchQueue.main.async {
-//            self.refreshControl.endRefreshing()
-//            self.isLoad = false
-//            if self.needClearNews {
-//                self.feeds.removeAll()
-//                self.tableView.reloadData()
-//            }
-//            self.feeds.append(contentsOf: feeds)
-//            self.tableView.reloadData()
-//        }
+    func handleFeedsResponse(feeds: [VkFeed]) {
         self.refreshControl.endRefreshing()
         isLoad = false
         if needClearNews {
@@ -156,8 +151,6 @@ extension NewsViewController: VkApiFeedsDelegate {
         }
         self.feeds.append(contentsOf: feeds)
         tableView.reloadData()
-        //        self.addNewCells(array: feeds)
-
     }
     
     
