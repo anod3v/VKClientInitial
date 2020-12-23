@@ -9,11 +9,11 @@
 import UIKit
 
 class NewsViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     private let refreshControl = UIRefreshControl()
     
-//    private let exampleCell = NewsTableViewCell()
+    //    private let exampleCell = NewsTableViewCell()
     private var textHeight: CGFloat = 0
     private var imageHeight: CGFloat = 0
     
@@ -62,7 +62,6 @@ class NewsViewController: UIViewController {
         alamofireAdapterService.getFeedWithClosure(startFrom: needClearNews ? "":startFrom) { [weak self] feeds in
             guard let self = self else { return }
             self.handleFeedsResponse(feeds: feeds)
-            self.newsFeedViewModels = self.newsFeedViewModelFactory.constructViewModel(from: feeds)
         }
     }
     
@@ -94,13 +93,13 @@ class NewsViewController: UIViewController {
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
     }
-
+    
 }
 
 extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return feeds.count
     }
@@ -135,12 +134,12 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
         
         return height
     }
-
+    
 }
 
 extension NewsViewController: NewsTableViewCellDelegate {
     func changeLike(row: Int) {
-//        news[row].changeLike()
+        //        news[row].changeLike()
     }
     
 }
@@ -152,9 +151,11 @@ extension NewsViewController {
         isLoad = false
         if needClearNews {
             self.feeds.removeAll()
+            self.feeds.removeAll()
             tableView.reloadData()
         }
         self.feeds.append(contentsOf: feeds)
+        self.newsFeedViewModels.append(contentsOf:self.newsFeedViewModelFactory.constructViewModel(from: feeds))
         tableView.reloadData()
     }
     
