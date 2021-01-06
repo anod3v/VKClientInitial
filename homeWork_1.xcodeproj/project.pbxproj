@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55C339EE259364EA00DE1083 /* AlamofireAdapterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339ED259364EA00DE1083 /* AlamofireAdapterService.swift */; };
+		55E6732A2593BD04003F193D /* VKNewsFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E673292593BD04003F193D /* VKNewsFeedViewModel.swift */; };
+		55E6732C2593BD7D003F193D /* NewsFeedModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E6732B2593BD7D003F193D /* NewsFeedModelFactory.swift */; };
 		5DC3809695F037A6B111CF13 /* Pods_homeWork_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB03EE607AE3B19FD932EA7A /* Pods_homeWork_1.framework */; };
 		840110E021EC364C0044AEB7 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840110DF21EC364C0044AEB7 /* TestViewController.swift */; };
 		84105FB3217F173D00EEF673 /* VKApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84105FB2217F173D00EEF673 /* VKApiViewController.swift */; };
@@ -63,6 +66,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		55C339ED259364EA00DE1083 /* AlamofireAdapterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapterService.swift; sourceTree = "<group>"; };
+		55E673292593BD04003F193D /* VKNewsFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKNewsFeedViewModel.swift; sourceTree = "<group>"; };
+		55E6732B2593BD7D003F193D /* NewsFeedModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedModelFactory.swift; sourceTree = "<group>"; };
 		840110DF21EC364C0044AEB7 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		84105FB2217F173D00EEF673 /* VKApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApiViewController.swift; sourceTree = "<group>"; };
 		8415662C21B7916500AF9803 /* SearchGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				8442ABA8219132B7003DDA6A /* AlamofireService.swift */,
+				55C339ED259364EA00DE1083 /* AlamofireAdapterService.swift */,
 				8442ABAA2192EC0D003DDA6A /* VkResponseParser.swift */,
 				8442ABAF21957D2D003DDA6A /* RealmWorker.swift */,
 				AA3D1EB021B25109000ED1C1 /* FirebaseService.swift */,
@@ -400,6 +407,8 @@
 			children = (
 				AA5766FC2160F0C10029F786 /* NewsViewController.swift */,
 				84D1DEBB21AE624A006FC20E /* NewsInfoViewController.swift */,
+				55E673292593BD04003F193D /* VKNewsFeedViewModel.swift */,
+				55E6732B2593BD7D003F193D /* NewsFeedModelFactory.swift */,
 			);
 			path = news;
 			sourceTree = "<group>";
@@ -567,6 +576,7 @@
 				842A0408216DB83F00FAFF92 /* CustomSearchBar.swift in Sources */,
 				8442ABAB2192EC0E003DDA6A /* VkResponseParser.swift in Sources */,
 				AA3D1EB121B25109000ED1C1 /* FirebaseService.swift in Sources */,
+				55C339EE259364EA00DE1083 /* AlamofireAdapterService.swift in Sources */,
 				842A03E0216C860000FAFF92 /* CustomIndicator.swift in Sources */,
 				8415662D21B7916500AF9803 /* SearchGroupViewController.swift in Sources */,
 				84D1DEC021AE8AB9006FC20E /* VkCommentProfile.swift in Sources */,
@@ -592,9 +602,11 @@
 				8424E560217845B700188E61 /* CustomInteractiveTransition.swift in Sources */,
 				AA5766E12160AC5B0029F786 /* FriendsViewController.swift in Sources */,
 				AA5766E62160AD8C0029F786 /* Friend.swift in Sources */,
+				55E6732C2593BD7D003F193D /* NewsFeedModelFactory.swift in Sources */,
 				84D1DEC521AE926B006FC20E /* CommentTableViewCell.swift in Sources */,
 				84D1DEBE21AE745D006FC20E /* NewsInfoTableViewCell.swift in Sources */,
 				84105FB3217F173D00EEF673 /* VKApiViewController.swift in Sources */,
+				55E6732A2593BD04003F193D /* VKNewsFeedViewModel.swift in Sources */,
 				844ACE372186D98900565895 /* VkGroup.swift in Sources */,
 				AA5766F72160E9080029F786 /* CustomLike.swift in Sources */,
 				AA5766EA2160AE950029F786 /* FriendTableViewCell.swift in Sources */,
